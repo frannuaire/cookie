@@ -1,5 +1,5 @@
 /***
-      <one line to give the program's name and a brief idea of what it does.>
+      cookie.js permet de gérer le Message légal pour l'utilisation des cookies. sauvegarde les données avec localstorage
       Copyright (C) 2017-05-29  Kevin FERRANDON
       
       This program is free software: you can redistribute it and/or modify
