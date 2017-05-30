@@ -35,10 +35,10 @@
                             "height: 40px;line-height: 40px; text-align:center;" +
                             "margin:50px 10px 10px 10px;" +
                             "background-color : rgba(0,0,0, 0.7);" +
-                            "border-top: solid #E6EFFD 1px;padding: 5px;" +
+                            "border-top: solid #999 1px;padding: 5px;" +
                             "padding-left: 5px; padding-top: 0;color: white; opacity: .7;" +
                             "box-shadow: 1px 10px 12px #000000;"+
-                            "z-index: 99999; position: absolute;}" +
+                            "z-index: 99999; }" +
                             ".hideCookie{display:none; }.cookie a{color:#f08c00;}";
                     var dvCookie = document.createElement('div');
                     var style = document.createElement('style');
