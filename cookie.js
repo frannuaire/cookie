@@ -1,5 +1,5 @@
 /***
-      cookie.js permet de gérer le Message légal pour l'utilisation des cookies. sauvegarde les données avec localstorage
+      <one line to give the program's name and a brief idea of what it does.>
       Copyright (C) 2017-05-29  Kevin FERRANDON
       
       This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
     
      Message légal pour l'utilisation des cookies. sauvegarde les données avec localstorage
      @author kevin ferrandon kferrandon@gmail.com  
-     @version 1.0   
+     @version 1.1   
  **/ 
  
  /**
@@ -33,11 +33,12 @@
                     var head = document.head || document.getElementsByTagName('head')[0];
                     var css = ".cookie {position: absolute;top: 0;left: 0;right: 0;width: 98%;" +
                             "height: 40px;line-height: 40px; text-align:center;" +
-                            "margin:10px 10px 10px 10px;" +
+                            "margin:50px 10px 10px 10px;" +
                             "background-color : rgba(0,0,0, 0.7);" +
                             "border-top: solid #E6EFFD 1px;padding: 5px;" +
                             "padding-left: 5px; padding-top: 0;color: white; opacity: .7;" +
-                            "box-shadow: 1px 10px 12px #000000; }" +
+                            "box-shadow: 1px 10px 12px #000000;"+
+                            "z-index: 99999; position: absolute;}" +
                             ".hideCookie{display:none; }.cookie a{color:#f08c00;}";
                     var dvCookie = document.createElement('div');
                     var style = document.createElement('style');
