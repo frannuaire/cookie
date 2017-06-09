@@ -18,7 +18,7 @@
     
      Message légal pour l'utilisation des cookies. sauvegarde les données avec localstorage
      @author kevin ferrandon kferrandon@gmail.com  
-     @version 1.1   
+     @version 1.2   
  **/ 
  
  /**
