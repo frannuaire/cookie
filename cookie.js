@@ -31,15 +31,16 @@
                  **/
                 createElt: function () {
                     var head = document.head || document.getElementsByTagName('head')[0];
-                    var css = ".cookie {position: absolute;top: 0;left: 0;right: 0;width: 98%;" +
-                            "height: 40px;line-height: 40px; text-align:center;" +
-                            "margin:50px 10px 10px 10px;" +
+                    var css = "" +
+                    ".cookie {position: absolute;top: 0;left: 0;right: 0;width: 98%;" +
+                            "height: 90px;line-height: 25px; text-align:center;" +
+                            "margin:5% 2% 2% 2%;" +
                             "background-color : rgba(0,0,0, 0.7);" +
                             "border-top: solid #999 1px;padding: 5px;" +
                             "padding-left: 5px; padding-top: 0;color: white; opacity: .7;" +
                             "box-shadow: 1px 10px 12px #000000;"+
                             "z-index: 99999; }" +
-                            ".hideCookie{display:none; }.cookie a{color:#f08c00;}";
+                     ".hideCookie{display:none;}.cookie a{color:#f08c00;}";
                     var dvCookie = document.createElement('div');
                     var style = document.createElement('style');
                     style.type = 'text/css';
@@ -51,7 +52,7 @@
                     head.appendChild(style);
                     dvCookie.setAttribute('id', 'cookie');
                     dvCookie.setAttribute('class', 'cookie');
-                    dvCookie.innerHTML = "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts. <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
+                    dvCookie.innerHTML = "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
                     var fermer = document.createElement('a');
                     fermer.setAttribute('id', 'btnHide');
                     fermer.setAttribute('href', '#');
