@@ -37,7 +37,7 @@
                             "margin:5% 2% 2% 2%;" +
                             "background-color : rgba(0,0,0, 0.7);" +
                             "border-top: solid #999 1px;padding: 5px;" +
-                            "padding-left: 5px; padding-top: 0;color: white; opacity: .7;" +
+                            "padding-left: 5px; padding-top: 1%;color: white; opacity: .7;" +
                             "box-shadow: 1px 10px 12px #000000;"+
                             "z-index: 99999; }" +
                      ".hideCookie{display:none;}.cookie a{color:#f08c00;}";
