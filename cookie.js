@@ -18,7 +18,7 @@
     
      Message légal pour l'utilisation des cookies. sauvegarde les données avec localstorage
      @author kevin ferrandon kferrandon@gmail.com  
-     @version 1.2   
+     @version 1.3   
  **/ 
  
  /**
@@ -33,7 +33,7 @@
                     var head = document.head || document.getElementsByTagName('head')[0];
                     var css = "" +
                     ".cookie {position: absolute;top: 0;left: 0;right: 0;width: 98%;" +
-                            "height: 90px;line-height: 25px; text-align:center;" +
+                            "height: 90px;line-height: 20px; text-align:center;" +
                             "margin:5% 2% 2% 2%;" +
                             "background-color : rgba(0,0,0, 0.7);" +
                             "border-top: solid #999 1px;padding: 5px;" +
@@ -91,15 +91,22 @@
                     if (localStorage.cookie === 'afficheMsg') {
                         this.hideCookie();
                     }
-
-                }
+                },
+                /* To set legal Text */
+                setText: function(text){
+                   var dvCookie = document.getElementById('cookie');
+                   dvCookie.innerHTML = text;                       
+                },
 
             };
  //  localStorage.cookie=null; // Décommenté pour réinitialiser
 /**
  *  initialisation de notre objet une fois la page chargé
  **/
+ var monCookie; 
 window.onload = function(){
-  var monCookie = new Object(Cookie);
-  monCookie.init();
+  window.monCookie = new Object(Cookie);
+  window.monCookie.init();
+  /** First way to change the text **/
+//  monCookie.setText('Test Message');
 };
