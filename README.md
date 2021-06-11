@@ -1,6 +1,6 @@
 # COOKIE.JS
 
-Cookie.js display and hide cookies message for french website requierment
+Cookie.js display and hide cookies message in french or english website requierment
 
 ## Exemple
 
