@@ -145,11 +145,11 @@
 /**
  *  initialisation de notre objet une fois la page chargé
  **/
-// var monCookie; 
-window.onload = function(){
+
+/*window.onload = function(){
 
 let monCookie = new Cookie('en' );
 
   /** First way to change the text **/
  // monCookie.setText('change message for cookie');
-};
+// };  
