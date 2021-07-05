@@ -17,5 +17,3 @@ include your cookie.js file at the end of your html file. Then Make an Instace o
 you should see this message appear on the top of your web page.
 
 ![message](msg.png)    
-      
-
