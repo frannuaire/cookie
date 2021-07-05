@@ -29,25 +29,30 @@
         constructor(language='fr', aCss=''){
           this.langue=language;
                
-          this.message= this.getMessage();
+          this.setMessage();
           this.bInit= false;   
           this.init(aCss);
-        }       
+        } 
+        
+        setMessage(){       
+          switch (this.langue){
+          case 'fr':
+                  this.message= "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
+          break;
+          case 'en':
+              this.message= "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
+          break;
+          
+          default:
+            this.message= "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
+          }   
+        }
         /**
          * we just use two language for the moment.
          **/
         getMessage(){
-          switch (this.langue){
-          case 'fr':
-                  return "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
-          break;
-          case 'en':
-              return "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
-          break;
-          
-          default:
-            return "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
-          }        
+         
+          return this.message;
         } 
          /**
                  * On test si on doit afficher ou cacher nos elements
@@ -62,9 +67,7 @@
                         eltCookie.setAttribute('class', 'hideCookie');
                     };
                     if (typeof (Storage) !== "undefined") {
-                        if (localStorage.cookie === null || localStorage.cookie === "undefined") {
-
-                        } else {
+                        if (localStorage.cookie !== null && localStorage.cookie !== "undefined") {
                             this.hideCookie();
                         }
                     } else {
@@ -97,7 +100,7 @@
                         
                      this.css = aCss;
                   }
-                     console.log(this.css);
+                  
                     let head = document.head || document.getElementsByTagName('head')[0];
                     let dvCookie = document.createElement('div');
                     let style = document.createElement('style');
