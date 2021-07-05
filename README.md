@@ -17,3 +17,5 @@ include your cookie.js file at the end of your html file. Then Make an Instace o
 you should see this message appear on the top of your web page.
 
 ![message](msg.png)    
+
+[![Code Grade](https://www.code-inspector.com/project/24557/status/svg)](https://frontend.code-inspector.com/public/project/24557/cookie/dashboard)
