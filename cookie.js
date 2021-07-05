@@ -26,7 +26,7 @@
   */
   class Cookie{ 
   
-        constructor(language='fr', aCss=''){
+        constructor(language="fr", aCss=""){
           this.langue=language;
                
           this.setMessage();
@@ -36,10 +36,10 @@
         
         setMessage(){       
           switch (this.langue){
-          case 'fr':
+          case "fr":
                   this.message= "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
           break;
-          case 'en':
+          case "en":
               this.message= "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
           break;
           
@@ -60,11 +60,11 @@
                  init(aCss) {
                     this.createElt(aCss);
                     
-                    var btnHide = document.getElementById('btnHide');
+                    var btnHide = document.getElementById("btnHide");
                     btnHide.onclick =  function(){
                        localStorage.setItem("cookie", "afficheMsg");
-                        var eltCookie = document.getElementById('cookie');
-                        eltCookie.setAttribute('class', 'hideCookie');
+                        var eltCookie = document.getElementById("cookie");
+                        eltCookie.setAttribute("class", "hideCookie");
                     };
                     if (typeof (Storage) !== "undefined") {
                         if (localStorage.cookie !== null && localStorage.cookie !== "undefined") {
@@ -74,7 +74,7 @@
                         this.hideCookie();
                     }
                     this.bInit = true;
-                    if (localStorage.cookie === 'afficheMsg') {
+                    if (localStorage.cookie === "afficheMsg") {
                         this.hideCookie();
                     }
                 } 
@@ -101,27 +101,27 @@
                      this.css = aCss;
                   }
                   
-                    let head = document.head || document.getElementsByTagName('head')[0];
-                    let dvCookie = document.createElement('div');
-                    let style = document.createElement('style');
-                    style.type = 'text/css';
+                    let head = document.head || document.getElementsByTagName("head")[0];
+                    let dvCookie = document.createElement("div");
+                    let style = document.createElement("style");
+                    style.type = "text/css";
                     if (style.styleSheet) {
                         style.styleSheet.cssText = this.css;
                     } else {
                         style.appendChild(document.createTextNode(this.css));
                     }
                     head.appendChild(style);
-                    dvCookie.setAttribute('id', 'cookie');
-                    dvCookie.setAttribute('class', 'cookie');
-                      let spanMsg=   document.createElement('span');
+                    dvCookie.setAttribute("id", "cookie");
+                    dvCookie.setAttribute("class", "cookie");
+                      let spanMsg=   document.createElement("span");
                       spanMsg.id= "spanMsg";
                       spanMsg.innerHTML=this.message;
                   //  dvCookie.innerHTML = this.message ;
-                    let fermer = document.createElement('a');
-                    fermer.setAttribute('id', 'btnHide');
-                    fermer.setAttribute('class', 'btnHide');
-                    fermer.setAttribute('href', '#');
-                    fermer.innerHTML = '&#x274C; ';
+                    let fermer = document.createElement("a");
+                    fermer.setAttribute("id", "btnHide");
+                    fermer.setAttribute("class", "btnHide");
+                    fermer.setAttribute("href", "#");
+                    fermer.innerHTML = "&#x274C;";
                      dvCookie.appendChild(spanMsg);
                     dvCookie.appendChild(fermer);
                     document.body.appendChild(dvCookie);
@@ -132,14 +132,14 @@
                   hideCookie () {
                     if (this.bInit) {
                         localStorage.setItem("cookie", "afficheMsg");
-                        var eltCookie = document.getElementById('cookie');
-                        eltCookie.setAttribute('class', 'hideCookie');
+                        var eltCookie = document.getElementById("cookie");
+                        eltCookie.setAttribute("class", "hideCookie");
                     }
                 }
                
                 /* To set legal Text */
                   setText(text){
-                   var dvCookie = document.getElementById('spanMsg');
+                   var dvCookie = document.getElementById("spanMsg");
                    dvCookie.innerHTML = text;                       
                 }
   }
