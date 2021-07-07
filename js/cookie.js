@@ -23,38 +23,47 @@
 
 const legacyCss = css = `
     .cookie {
+        display: grid;
+        place-content: center;
         position: fixed;          
         left: 0;
         right: 0;
         bottom: 0;
         padding: 10px;
-        min-height: 90px;
-        line-height: 20px;
-        text-align:center;
-        color: white; 
-        opacity: .7;
         background-color : #000a;
         box-shadow: 0 0 12px #000000;
+        opacity: .7;
         z-index: 99999;
     }
     
     p {
+        color: white; 
+        line-height: 20px;
+        text-align:center;
         width: 100%;
     }
     
     #btnHide {
-        color:#e97200;
-        text-align:right;
-        text-decoration:none;
-        padding-left:10px;
+        transition: 0.5s ease-in-out;
+        text-decoration: none;
+        margin-left: 5px;
     }
     
     .hideCookie {
-        display:none;
+        display: none;
     }
                     
     .cookie a {
-        color:#f08c00;
+        color: #f08c00;
+        text-decoration: underline;
+    }
+    
+    .cookie a:hover {
+        text-decoration: underline dotted;
+    }
+    
+    .cookie p span {
+        white-space: nowrap;
     }
 `;
 
@@ -77,22 +86,28 @@ class Cookie {
                 this.message = `
                     En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de 
                     services adaptés à vos centres d' intérêts.
-                    <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>
+                    <span>
+                        <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>
+                    </span>
                 `;
                 break;
             case "en":
                 this.message = `
                     By continuing to browse this site, you accept the use of cookies to provide services tailored to 
                     your interests.
-                    <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
-                    `;
+                    <span>
+                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
+                    </span>                    
+                `;
                 break;
 
             default:
                 this.message = `
                     By continuing to browse this site, you accept the use of cookies to provide services tailored to
                      your interests.
-                    <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
+                    <span>
+                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
+                    </span>
                 `;
         }
     }
@@ -133,7 +148,7 @@ class Cookie {
      *  Création des éléments HTML et css que l' on ajoute ensuite au body
      **/
     createElt(customCss) {
-        this.css = (customCss === undefined) ? legacyCss: customCss;
+        this.css = (customCss === undefined) ? legacyCss : customCss;
 
         let head = document.head || document.getElementsByTagName("head")[0];
         let dvCookie = document.createElement("div");
@@ -161,8 +176,10 @@ class Cookie {
         fermer.setAttribute("href", "#");
         fermer.innerHTML = "&#x274C;";
 
+        let spanMsg = pMsg.getElementsByTagName('span')[0];
+        spanMsg.appendChild(fermer);
+
         dvCookie.appendChild(pMsg);
-        dvCookie.appendChild(fermer);
         document.body.appendChild(dvCookie);
     }
 
