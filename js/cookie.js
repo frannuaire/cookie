@@ -21,7 +21,7 @@
  @version 2.0
  **/
 
-const legacyCss = css = `
+const legacyCss = `
     .cookie {
         display: grid;
         place-content: center;
