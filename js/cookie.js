@@ -86,17 +86,41 @@ class Cookie {
     createElt(aCss) {
 
         if (aCss === '') {
-            this.css = "" +
-                ".cookie {position: absolute;top: 0;left: 0;right: 0;width: 98%;" +
-                "height: 90px;line-height: 20px; text-align:center;" +
-                "margin:5% 2% 2% 2%;" +
-                "background-color : rgba(0,0,0, 0.7);" +
-                "border-top: solid #999 1px;padding: 5px;" +
-                "padding-left: 5px; padding-top: 1%;color: white; opacity: .7;" +
-                "box-shadow: 1px 10px 12px #000000;" +
-                "z-index: 99999; }" +
-                "#btnHide{color:#e97200;text-align:right;text-decoration:none;padding-left:10px;}" +
-                ".hideCookie{display:none;}.cookie a{color:#f08c00;}";
+            this.css = `
+                .cookie {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    width: 98%;
+                    
+                    height: 90px;
+                    line-height: 20px;
+                    text-align:center;
+                    
+                    margin:5% 2% 2% 2%;
+                    background-color : rgba(0,0,0, 0.7);
+                    border-top: solid #999 1px;
+                    padding: 1% 5px 5px;
+                    color: white; opacity: .7;
+                    box-shadow: 1px 10px 12px #000000;
+                    z-index: 99999;
+                }
+                
+                #btnHide{
+                    color:#e97200;
+                    text-align:right;
+                    text-decoration:none;
+                    padding-left:10px;
+                }
+                    
+                .hideCookie{
+                    display:none;
+                }
+                
+                .cookie a{
+                    color:#f08c00;
+                }`;
         } else {
 
             this.css = aCss;
