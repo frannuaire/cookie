@@ -37,14 +37,23 @@ class Cookie {
     setMessage() {
         switch (this.langue) {
             case "fr":
-                this.message = "En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d'intérêts.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>";
+                this.message = `
+                    En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d' intérêts.
+                    <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>
+                `;
                 break;
             case "en":
-                this.message = "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
+                this.message = `
+                    By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.
+                    <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>
+                    `;
                 break;
 
             default:
-                this.message = "By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.<br /> <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>"
+                this.message = `
+                    By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.
+                    <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>Know more</a>
+                `;
         }
     }
 
@@ -88,23 +97,26 @@ class Cookie {
         if (aCss === '') {
             this.css = `
                 .cookie {
-                    position: absolute;
-                    top: 0;
+                    position: fixed;
+                             
                     left: 0;
                     right: 0;
-                    width: 98%;
+                    bottom: 0;
                     
-                    height: 90px;
+                    padding: 10px;
+                    min-height: 90px;
                     line-height: 20px;
                     text-align:center;
-                    
-                    margin:5% 2% 2% 2%;
-                    background-color : rgba(0,0,0, 0.7);
-                    border-top: solid #999 1px;
-                    padding: 1% 5px 5px;
-                    color: white; opacity: .7;
-                    box-shadow: 1px 10px 12px #000000;
+
+                    color: white; 
+                    opacity: .7;
+                    background-color : #000a;
+                    box-shadow: 0 0 12px #000000;
                     z-index: 99999;
+                }
+                
+                p {
+                  width: 100%;
                 }
                 
                 #btnHide{
@@ -121,8 +133,8 @@ class Cookie {
                 .cookie a{
                     color:#f08c00;
                 }`;
-        } else {
 
+        } else {
             this.css = aCss;
         }
 
@@ -138,16 +150,16 @@ class Cookie {
         head.appendChild(style);
         dvCookie.setAttribute("id", "cookie");
         dvCookie.setAttribute("class", "cookie");
-        let spanMsg = document.createElement("span");
-        spanMsg.id = "spanMsg";
-        spanMsg.innerHTML = this.message;
+        let pMsg = document.createElement("p");
+        pMsg.id = "pMsg";
+        pMsg.innerHTML = this.message;
         //  dvCookie.innerHTML = this.message ;
         let fermer = document.createElement("a");
         fermer.setAttribute("id", "btnHide");
         fermer.setAttribute("class", "btnHide");
         fermer.setAttribute("href", "#");
         fermer.innerHTML = "&#x274C;";
-        dvCookie.appendChild(spanMsg);
+        dvCookie.appendChild(pMsg);
         dvCookie.appendChild(fermer);
         document.body.appendChild(dvCookie);
     }
