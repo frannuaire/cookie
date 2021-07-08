@@ -6,8 +6,8 @@ Cookie.js display and hide cookies message in French or English website requirem
 
 ## Get started
 
--    Include your cookie.js file at the end of your html file (`body`)
--    Make an Instance of cookie
+-   Include your cookie.js file at the end of your html file (`body`)
+-   Make an Instance of cookie
 
 ```html
 

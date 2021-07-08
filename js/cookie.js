@@ -131,7 +131,7 @@ class Cookie {
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         };
-        if (typeof (Storage) != null) {
+        if (Storage !== null) {
             if (localStorage.cookie !== null && localStorage.cookie !== "undefined") {
                 this.hideCookie();
             }
