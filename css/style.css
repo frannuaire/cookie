@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  color: white;
+  background: #c66f37;
+  font-family: "Helvetica", "Roboto", sans-serif;
+  font-size: clamp(12px, 4vw, 18px);
+}
+
+main {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 4em;
+  line-height: 2em;
+}
+
+p {
+  text-align: center;
+  width: clamp(35ch, 30vw, 75ch);
+  font-size: 1em;
+}
+
+h1::selection,
+p::selection {
+  color: #67340e;
+}
