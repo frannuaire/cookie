@@ -72,7 +72,7 @@ const legacyCss = `
  */
 class Cookie {
 
-    constructor(language = "fr", customCSS = undefined) {
+    constructor(language = "fr", customCSS= null) {
         this.langue = language;
 
         this.setMessage();
@@ -131,7 +131,7 @@ class Cookie {
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         };
-        if (typeof (Storage) !== "undefined") {
+        if (typeof (Storage) != null) {
             if (localStorage.cookie !== null && localStorage.cookie !== "undefined") {
                 this.hideCookie();
             }
