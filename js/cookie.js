@@ -122,33 +122,32 @@ class Cookie {
     /**
      * On test si on doit afficher ou cacher nos elements
      **/
-    init(aCss) {
-        this.createElt(aCss);
+    init(customCss) {
+        this.createElt(customCss);
 
         let btnHide = document.getElementById("btnHide");
-        btnHide.onclick = function () {
+
+        btnHide.onclick = () => {
             localStorage.setItem("cookie", "afficheMsg");
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         };
-        if (Storage !== null) {
-            if (localStorage.cookie !== null && localStorage.cookie !== "undefined") {
-                this.hideCookie();
-            }
-        } else {
+
+        if (
+            Storage === null || localStorage.cookie !== null &&
+            localStorage.cookie !== "undefined" && localStorage.cookie === "afficheMsg"
+        ) {
             this.hideCookie();
         }
+
         this.bInit = true;
-        if (localStorage.cookie === "afficheMsg") {
-            this.hideCookie();
-        }
     }
 
     /**
      *  Création des éléments HTML et css que l' on ajoute ensuite au body
      **/
     createElt(customCss) {
-        this.css = (customCss === undefined) ? legacyCss : customCss;
+        this.css = (customCss === null) ? legacyCss : customCss;
 
         let head = document.head || document.getElementsByTagName("head")[0];
         let dvCookie = document.createElement("div");
@@ -176,7 +175,7 @@ class Cookie {
         fermer.setAttribute("href", "#");
         fermer.innerHTML = "&#x274C;";
 
-        let spanMsg = pMsg.getElementsByTagName('span')[0];
+        let spanMsg = pMsg.getElementsByTagName("span")[0];
         spanMsg.appendChild(fermer);
 
         dvCookie.appendChild(pMsg);
