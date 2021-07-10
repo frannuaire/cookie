@@ -85,6 +85,60 @@ class Cookie {
                 this.btnText = `En savoir plus`;
                 break;
 
+            case 'es':
+                // Approved by Falling
+                this.message = `Al continuar navegando por este sitio, usted acepta el uso de cookies para proporcionar servicios adaptados a sus intereses.`;
+                this.btnText = `Saber más`;
+                break;
+
+            case 'de':
+                this.message = `Wenn Sie auf dieser Seite weitersurfen, akzeptieren Sie die Verwendung von Cookies, um Ihnen auf Ihre Interessen zugeschnittene Dienste anzubieten.`;
+                this.btnText = `Mehr wissen`;
+                break;
+
+            case 'pl':
+                // Thanks to trag1c
+                this.message = `Kontynuując przeglądanie tej strony, akceptujesz użycie plików cookie w celu świadczenia usług dostosowanych do Twoich zainteresowań.`;
+                this.btnText = `Dowiedz się więcej`;
+                break;
+
+            case 'vn':
+                // Thanks to HgVN
+                this.message = `Bằng cách tiếp tục duyệt trang web này, bạn chấp nhận việc sử dụng Cookie để cung cấp các dịch vụ phù hợp với bạn.`
+                this.btnText = `Biết nhiều hơn`;
+                break;
+
+            case 'ar':
+                // Thanks nezku
+                this.message = `بأستمرارك لتصفح لهذه الصفحة، فأنت تقبل سياسة استخدام "الكوكيز" لعرض خدمات مناسبة لأستخدامك`;
+                this.btnText = `تعرف أكثر`;
+                break;
+
+            case 'jp':
+                // Thanks to Nanashi
+                this.message = `このサイトでは興味を分析し、サービスを向上させるためにクッキーを使用します。`
+                this.btnText = `詳しく`;
+                break;
+
+            case 'no':
+                // Thanks to eivl
+                this.message = `Ved å fortsette å surfe på dette nettstedet godtar du bruk av informasjonskapsler for å tilby tjenester skreddersydd til dine interesser.`;
+                this.btnText = `les mer`;
+                break;
+
+            case 'cz':
+                // Thanks to ajko
+                this.message = `Pokračováním na tuto stránku souhlasíte s používaním cookies pro přizpůsobení vaším zajmům.`;
+                this.btnText = `Vědět více`;
+                break;
+
+            case 'sk':
+                // Thanks to ajko
+                this.message = `Pokračovaním na túto stránku súhlasíte s používaním cookies na prispôsobenie vašim záujmom.`;
+                this.btnText =`Vedieť viac`;
+                break;
+
+
             default:
                 this.message = `By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.`;
                 this.btnText = `Know more`;
@@ -92,7 +146,6 @@ class Cookie {
         }
     }
 
-    /*  we just use two language for the moment. */
     getMessage() {
         return this.message;
     }
