@@ -72,9 +72,7 @@ class Cookie {
 
     constructor(language = "fr", customCSS= null) {
         this.langue = language;
-
         this.setMessage();
-        this.bInit = false;
         this.init(customCSS);
     }
 
@@ -128,8 +126,6 @@ class Cookie {
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         };
-
-        this.bInit = true;
     }
 
     /*  Html elements and style creation which are added to body. */
@@ -170,11 +166,9 @@ class Cookie {
 
     /* Hide cookie element */
     hideCookie() {
-        if (this.bInit) {
-            localStorage.setItem("cookie", "accepted");
-            let eltCookie = document.getElementById("cookie");
-            eltCookie.setAttribute("class", "hideCookie");
-        }
+        localStorage.setItem("cookie", "accepted");
+        let eltCookie = document.getElementById("cookie");
+        eltCookie.setAttribute("class", "hideCookie");
     }
 
     /* Set legal Text */
