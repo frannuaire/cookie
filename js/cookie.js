@@ -22,7 +22,14 @@
  **/
 
 const legacyCss = `
+    @keyframes slide-up {
+        0% {
+          transform: translateY(100%);
+        }
+    }
+
     .cookie {
+        animation: slide-up 1s cubic-bezier(0.55, 0.09, 0.43, 0.9);
         display: grid;
         place-content: center;
         position: fixed;          
