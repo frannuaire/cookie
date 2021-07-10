@@ -115,17 +115,10 @@ class Cookie {
 
     /* Testing whether the cookie should be displayed or hidden */
     init(customCss) {
+        // Cancel Box creation when cookie are already accepted.
         if (localStorage.cookie === "accepted") return
 
         this.createElt(customCss);
-
-        let btnHide = document.getElementById("btnHide");
-
-        btnHide.onclick = () => {
-            localStorage.setItem("cookie", "accepted");
-            let eltCookie = document.getElementById("cookie");
-            eltCookie.setAttribute("class", "hideCookie");
-        };
     }
 
     /*  Html elements and style creation which are added to body. */
@@ -156,6 +149,8 @@ class Cookie {
         fermer.setAttribute("class", "btnHide");
         fermer.setAttribute("href", "#");
         fermer.innerHTML = "&#x274C;";
+
+        fermer.onclick = this.hideCookie;
 
         let spanMsg = pMsg.getElementsByTagName("span")[0];
         spanMsg.appendChild(fermer);
