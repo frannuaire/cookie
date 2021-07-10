@@ -67,9 +67,7 @@ const legacyCss = `
     }
 `;
 
-/**
- * Objet permettant de gérer le message d' acceptation des cookies.
- */
+/*  An Object that handle cookie message box */
 class Cookie {
 
     constructor(language = "fr", customCSS= null) {
@@ -112,16 +110,12 @@ class Cookie {
         }
     }
 
-    /**
-     * we just use two language for the moment.
-     **/
+    /*  we just use two language for the moment. */
     getMessage() {
         return this.message;
     }
 
-    /**
-     * On test si on doit afficher ou cacher nos elements
-     **/
+    /* Testing whether the cookie should be displayed or hidden */
     init(customCss) {
         this.createElt(customCss);
 
@@ -147,9 +141,7 @@ class Cookie {
 
     }
 
-    /**
-     *  Création des éléments HTML et css que l' on ajoute ensuite au body
-     **/
+    /*  Html elements and style creation which are added to body. */
     createElt(customCss) {
         this.css = (customCss === null) ? legacyCss : customCss;
 
@@ -172,7 +164,6 @@ class Cookie {
         pMsg.id = "pMsg";
         pMsg.innerHTML = this.message;
 
-        // dvCookie.innerHTML = this.message ;
         let fermer = document.createElement("a");
         fermer.setAttribute("id", "btnHide");
         fermer.setAttribute("class", "btnHide");
@@ -186,9 +177,7 @@ class Cookie {
         document.body.appendChild(dvCookie);
     }
 
-    /**
-     *  Cache les éléments html
-     **/
+    /* Hide cookie element */
     hideCookie() {
         if (this.bInit) {
             localStorage.setItem("cookie", "afficheMsg");
@@ -197,7 +186,7 @@ class Cookie {
         }
     }
 
-    /* To set legal Text */
+    /* Set legal Text */
     setText(text) {
         let dvCookie = document.getElementById("pMsg");
         dvCookie.innerHTML = text;
