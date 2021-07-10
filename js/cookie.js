@@ -117,28 +117,19 @@ class Cookie {
 
     /* Testing whether the cookie should be displayed or hidden */
     init(customCss) {
+        if (localStorage.cookie === "accepted") return
+
         this.createElt(customCss);
 
         let btnHide = document.getElementById("btnHide");
 
         btnHide.onclick = () => {
-            localStorage.setItem("cookie", "afficheMsg");
+            localStorage.setItem("cookie", "accepted");
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         };
 
-        if (
-            Storage === null || localStorage.cookie !== null && localStorage.cookie !== "undefined"
-        ) {
-            this.hideCookie();
-        }
-
         this.bInit = true;
-
-        if (localStorage.cookie === "afficheMsg") {
-            this.hideCookie();
-        }
-
     }
 
     /*  Html elements and style creation which are added to body. */
@@ -180,7 +171,7 @@ class Cookie {
     /* Hide cookie element */
     hideCookie() {
         if (this.bInit) {
-            localStorage.setItem("cookie", "afficheMsg");
+            localStorage.setItem("cookie", "accepted");
             let eltCookie = document.getElementById("cookie");
             eltCookie.setAttribute("class", "hideCookie");
         }
