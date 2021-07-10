@@ -63,6 +63,7 @@ const legacyCss = `
     }
     
     .cookie p span {
+        margin-left: 4px;
         white-space: nowrap;
     }
 `;
@@ -71,40 +72,23 @@ const legacyCss = `
 class Cookie {
 
     constructor(language = "fr", customCSS= null) {
-        this.langue = language;
+        this.lang = language;
         this.setMessage();
+
         this.init(customCSS);
     }
 
     setMessage() {
-        switch (this.langue) {
+        switch (this.lang) {
             case "fr":
-                this.message = `
-                    En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de 
-                    services adaptés à vos centres d' intérêts.
-                    <span>
-                        <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>
-                    </span>
-                `;
-                break;
-            case "en":
-                this.message = `
-                    By continuing to browse this site, you accept the use of cookies to provide services tailored to 
-                    your interests.
-                    <span>
-                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
-                    </span>                    
-                `;
+                this.message = `En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d' intérêts.`;
+                this.btnText = `En savoir plus`;
                 break;
 
             default:
-                this.message = `
-                    By continuing to browse this site, you accept the use of cookies to provide services tailored to
-                     your interests.
-                    <span>
-                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
-                    </span>
-                `;
+                this.message = `By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.`;
+                this.btnText = `Know more`;
+                break;
         }
     }
 
@@ -144,16 +128,21 @@ class Cookie {
         pMsg.id = "pMsg";
         pMsg.innerHTML = this.message;
 
-        let fermer = document.createElement("a");
-        fermer.setAttribute("id", "btnHide");
-        fermer.setAttribute("class", "btnHide");
-        fermer.setAttribute("href", "#");
-        fermer.innerHTML = "&#x274C;";
+        let btnMore = document.createElement("a");
+        btnMore.setAttribute("href", `https://www.google.com/intl/${this.lang}/policies/technologies/cookies/`);
+        btnMore.innerHTML = this.btnText;
 
-        fermer.onclick = this.hideCookie;
+        let btnClose = document.createElement("a");
+        btnClose.setAttribute("id", "btnHide");
+        btnClose.setAttribute("class", "btnHide");
+        btnClose.setAttribute("href", "#");
+        btnClose.onclick = this.hideCookie;
+        btnClose.innerHTML = "&#x274C;";
 
-        let spanMsg = pMsg.getElementsByTagName("span")[0];
-        spanMsg.appendChild(fermer);
+        let spanMsg = document.createElement("span");
+        spanMsg.appendChild(btnMore);
+        spanMsg.appendChild(btnClose);
+        pMsg.appendChild(spanMsg);
 
         dvCookie.appendChild(pMsg);
         document.body.appendChild(dvCookie);
