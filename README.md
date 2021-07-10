@@ -19,6 +19,17 @@ Cookie.js display and hide cookies message in French or English website requirem
 </script>
 ```
 
-You should see this message appears on the top of your web page.
+### Reset accepted cookies
+There are 3 ways you can reset accepted cookies:
+
+-   Clear browser cookies from your website
+-   Removing cookie key using javascript
+```js
+localStorage.cookie=null;
+```
+-   Delete cookie key for application storage within web inspector.
+
+<hr>
+If you haven't accepted any cookies yet, you should see this message appears on the top of your web page.
 
 ![message](exemple-message.png)    
