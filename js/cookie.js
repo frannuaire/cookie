@@ -134,13 +134,17 @@ class Cookie {
         };
 
         if (
-            Storage === null || localStorage.cookie !== null &&
-            localStorage.cookie !== "undefined" && localStorage.cookie === "afficheMsg"
+            Storage === null || localStorage.cookie !== null && localStorage.cookie !== "undefined"
         ) {
             this.hideCookie();
         }
 
         this.bInit = true;
+
+        if (localStorage.cookie === "afficheMsg") {
+            this.hideCookie();
+        }
+
     }
 
     /**
