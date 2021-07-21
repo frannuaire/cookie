@@ -1,6 +1,6 @@
 # Cookie.js
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b709f9cc229649e7aa2ff9abd722849b)](https://www.codacy.com/gh/frannuaire/cookie/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=frannuaire/cookie&amp;utm_campaign=Badge_Grade) [![Code Grade](https://www.code-inspector.com/project/24557/status/svg)](https://frontend.code-inspector.com/public/project/24557/cookie/dashboard)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sigmanificient/cookie/badges/quality-score.png?b=gh-pages)](https://scrutinizer-ci.com/g/Sigmanificient/cookie/?branch=gh-pages)
 
 Cookie.js display and hide cookies message in French or English website requirements.
 
