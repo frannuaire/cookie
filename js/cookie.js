@@ -22,7 +22,14 @@
  **/
 
 const legacyCss = `
+    @keyframes slide-up {
+        0% {
+          transform: translateY(100%);
+        }
+    }
+
     .cookie {
+        animation: slide-up 1s cubic-bezier(0.55, 0.09, 0.43, 0.9);
         display: grid;
         place-content: center;
         position: fixed;          
@@ -63,89 +70,102 @@ const legacyCss = `
     }
     
     .cookie p span {
+        margin-left: 4px;
         white-space: nowrap;
     }
 `;
 
-/**
- * Objet permettant de gérer le message d' acceptation des cookies.
- */
+/*  An Object that handle cookie message box */
 class Cookie {
 
     constructor(language = "fr", customCSS= null) {
-        this.langue = language;
-
+        this.lang = language;
         this.setMessage();
-        this.bInit = false;
+
         this.init(customCSS);
     }
 
     setMessage() {
-        switch (this.langue) {
+        switch (this.lang) {
             case "fr":
-                this.message = `
-                    En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de 
-                    services adaptés à vos centres d' intérêts.
-                    <span>
-                        <a href='https://www.google.com/intl/fr/policies/technologies/cookies/'>En savoir plus</a>
-                    </span>
-                `;
-                break;
-            case "en":
-                this.message = `
-                    By continuing to browse this site, you accept the use of cookies to provide services tailored to 
-                    your interests.
-                    <span>
-                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
-                    </span>                    
-                `;
+                this.message = `En continuant à naviguer sur ce site, vous acceptez l'utilisation de cookies pour disposer de services adaptés à vos centres d' intérêts.`;
+                this.btnText = `En savoir plus`;
                 break;
 
+            case 'es':
+                // Approved by Falling
+                this.message = `Al continuar navegando por este sitio, usted acepta el uso de cookies para proporcionar servicios adaptados a sus intereses.`;
+                this.btnText = `Saber más`;
+                break;
+
+            case 'de':
+                this.message = `Wenn Sie auf dieser Seite weitersurfen, akzeptieren Sie die Verwendung von Cookies, um Ihnen auf Ihre Interessen zugeschnittene Dienste anzubieten.`;
+                this.btnText = `Mehr wissen`;
+                break;
+
+            case 'pl':
+                // Thanks to trag1c
+                this.message = `Kontynuując przeglądanie tej strony, akceptujesz użycie plików cookie w celu świadczenia usług dostosowanych do Twoich zainteresowań.`;
+                this.btnText = `Dowiedz się więcej`;
+                break;
+
+            case 'vn':
+                // Thanks to HgVN
+                this.message = `Bằng cách tiếp tục duyệt trang web này, bạn chấp nhận việc sử dụng Cookie để cung cấp các dịch vụ phù hợp với bạn.`
+                this.btnText = `Biết nhiều hơn`;
+                break;
+
+            case 'ar':
+                // Thanks nezku
+                this.message = `بأستمرارك لتصفح لهذه الصفحة، فأنت تقبل سياسة استخدام "الكوكيز" لعرض خدمات مناسبة لأستخدامك`;
+                this.btnText = `تعرف أكثر`;
+                break;
+
+            case 'jp':
+                // Thanks to Nanashi
+                this.message = `このサイトでは興味を分析し、サービスを向上させるためにクッキーを使用します。`
+                this.btnText = `詳しく`;
+                break;
+
+            case 'no':
+                // Thanks to eivl
+                this.message = `Ved å fortsette å surfe på dette nettstedet godtar du bruk av informasjonskapsler for å tilby tjenester skreddersydd til dine interesser.`;
+                this.btnText = `les mer`;
+                break;
+
+            case 'cz':
+                // Thanks to ajko
+                this.message = `Pokračováním na tuto stránku souhlasíte s používaním cookies pro přizpůsobení vaším zajmům.`;
+                this.btnText = `Vědět více`;
+                break;
+
+            case 'sk':
+                // Thanks to ajko
+                this.message = `Pokračovaním na túto stránku súhlasíte s používaním cookies na prispôsobenie vašim záujmom.`;
+                this.btnText =`Vedieť viac`;
+                break;
+
+
             default:
-                this.message = `
-                    By continuing to browse this site, you accept the use of cookies to provide services tailored to
-                     your interests.
-                    <span>
-                        <a href='https://www.google.com/intl/en/policies/technologies/cookies/'>Know more</a>
-                    </span>
-                `;
+                this.message = `By continuing to browse this site, you accept the use of cookies to provide services tailored to your interests.`;
+                this.btnText = `Know more`;
+                break;
         }
     }
 
-    /**
-     * we just use two language for the moment.
-     **/
     getMessage() {
         return this.message;
     }
 
-    /**
-     * On test si on doit afficher ou cacher nos elements
-     **/
+    /* Testing whether the cookie should be displayed or hidden */
     init(customCss) {
+        // Cancel Box creation when cookie are already accepted.
+        if (localStorage.cookie === "accepted") return
+
         this.createElt(customCss);
-
-        let btnHide = document.getElementById("btnHide");
-
-        btnHide.onclick = () => {
-            localStorage.setItem("cookie", "afficheMsg");
-            let eltCookie = document.getElementById("cookie");
-            eltCookie.setAttribute("class", "hideCookie");
-        };
-
-        if (
-            Storage === null || localStorage.cookie !== null &&
-            localStorage.cookie !== "undefined" && localStorage.cookie === "afficheMsg"
-        ) {
-            this.hideCookie();
-        }
-
-        this.bInit = true;
     }
 
-    /**
-     *  Création des éléments HTML et css que l' on ajoute ensuite au body
-     **/
+    /*  Html elements and style creation which are added to body. */
     createElt(customCss) {
         this.css = (customCss === null) ? legacyCss : customCss;
 
@@ -168,32 +188,34 @@ class Cookie {
         pMsg.id = "pMsg";
         pMsg.innerHTML = this.message;
 
-        // dvCookie.innerHTML = this.message ;
-        let fermer = document.createElement("a");
-        fermer.setAttribute("id", "btnHide");
-        fermer.setAttribute("class", "btnHide");
-        fermer.setAttribute("href", "#");
-        fermer.innerHTML = "&#x274C;";
+        let btnMore = document.createElement("a");
+        btnMore.setAttribute("href", `https://www.google.com/intl/${this.lang}/policies/technologies/cookies/`);
+        btnMore.innerHTML = this.btnText;
 
-        let spanMsg = pMsg.getElementsByTagName("span")[0];
-        spanMsg.appendChild(fermer);
+        let btnClose = document.createElement("a");
+        btnClose.setAttribute("id", "btnHide");
+        btnClose.setAttribute("class", "btnHide");
+        btnClose.setAttribute("href", "#");
+        btnClose.onclick = this.hideCookie;
+        btnClose.innerHTML = "&#x274C;";
+
+        let spanMsg = document.createElement("span");
+        spanMsg.appendChild(btnMore);
+        spanMsg.appendChild(btnClose);
+        pMsg.appendChild(spanMsg);
 
         dvCookie.appendChild(pMsg);
         document.body.appendChild(dvCookie);
     }
 
-    /**
-     *  Cache les éléments html
-     **/
+    /* Hide cookie element */
     hideCookie() {
-        if (this.bInit) {
-            localStorage.setItem("cookie", "afficheMsg");
-            let eltCookie = document.getElementById("cookie");
-            eltCookie.setAttribute("class", "hideCookie");
-        }
+        localStorage.setItem("cookie", "accepted");
+        let eltCookie = document.getElementById("cookie");
+        eltCookie.setAttribute("class", "hideCookie");
     }
 
-    /* To set legal Text */
+    /* Set legal Text */
     setText(text) {
         let dvCookie = document.getElementById("pMsg");
         dvCookie.innerHTML = text;
